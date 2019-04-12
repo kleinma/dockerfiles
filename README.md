@@ -4,12 +4,15 @@ These dockerfiles all start with Tensorflow and add a few more tools. The main a
 ## Building Images
 
 All the dockerfiles are named `tf-<TAG>.Dockerfile` where tag indicates the tensorflow tag. I've chosen to name the images in the following way:
-`docker build --rm -f tf-1.13.1-py3.Dockerfile -t mytf:1.13.1-py3 .`
+```
+docker build --rm -f tf-1.13.1-py3.Dockerfile -t mytf:1.13.1-py3 .
+```
 
 ## Aliases
 To make things easier, add aliases of long docker run commands.
 
 ### Some options to add to docker comand
+* `--runtime=nvidia` Use the GPU. (Necessary if using a gpu tag.)
 * `-u $(id -u):$(id -g)` Run as current user (not as root).
 * `-e DISPLAY=$DISPLAY` and `-v /tmp/.X11-unix:/tmp/.X11-unix` Show matplotlib plots.
 * `-v $PWD:/tmp` and `-w /tmp` Map the current directory to `/tmp` and make `/tmp` the working directory.
