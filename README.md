@@ -17,7 +17,7 @@ To make things easier, add aliases of long docker run commands.
 * `-e DISPLAY=$DISPLAY` Needed for X11 forwarding.
 * `-v ${HOME}/.Xauthority:/tmp/.Xauthority -e XAUTHORITY=/tmp/.Xauthority` Map `.Xauthority` to the container and point to it to connect to the X11 server.
 * `--net=host` Currently needed to connect to the X11 server over ssh. It would be nice if we could change this.
-* `-v $PWD:/tmp` and `-w /tmp` Map the current directory to `/tmp` and make `/tmp` the working directory.
+* `-v $PWD:/app` and `-w /app` Map the current directory to `/app` and make `/app` the working directory.
 
 ### Example aliases
 ```
@@ -26,26 +26,26 @@ alias pytf='docker run --runtime=nvidia -it --rm -u $(id -u):$(id -g) \
             --net=host -e DISPLAY=$DISPLAY \
             -v ${HOME}/.Xauthority:/tmp/.Xauthority \
             -e XAUTHORITY=/tmp/.Xauthority \
-            -v $PWD:/tmp -w /tmp \
+            -v $PWD:/app -w /app \
             mytf:1.13.1-gpu-py3 python'
 alias bashtf='docker run --runtime=nvidia -it --rm -u $(id -u):$(id -g) \
               --net=host -e DISPLAY=$DISPLAY \
               -v ${HOME}/.Xauthority:/tmp/.Xauthority \
               -e XAUTHORITY=/tmp/.Xauthority \
-              -v $PWD:/tmp -w /tmp \
+              -v $PWD:/app -w /app \
               mytf:1.13.1-gpu-py3 bash'
 
 alias pytf2='docker run --runtime=nvidia -it --rm -u $(id -u):$(id -g) \
              --net=host -e DISPLAY=$DISPLAY \
              -v ${HOME}/.Xauthority:/tmp/.Xauthority \
              -e XAUTHORITY=/tmp/.Xauthority \
-             -v $PWD:/tmp -w /tmp \
+             -v $PWD:/app -w /app \
              mytf:2.0.0b1-gpu-py3 python'
 alias bashtf2='docker run --runtime=nvidia -it --rm -u $(id -u):$(id -g) \
                --net=host -e DISPLAY=$DISPLAY \
                -v ${HOME}/.Xauthority:/tmp/.Xauthority \
                -e XAUTHORITY=/tmp/.Xauthority \
-               -v $PWD:/tmp -w /tmp \
+               -v $PWD:/app -w /app \
                mytf:2.0.0b1-gpu-py3 bash'
 ```
 Use cases of these aliases:
