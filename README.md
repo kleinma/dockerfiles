@@ -5,7 +5,7 @@ These dockerfiles all start with Tensorflow and add a few more tools. The main a
 
 All the dockerfiles are named `tf-<TAG>.Dockerfile` where tag indicates the tensorflow tag. I've chosen to name the images in the following way:
 ```
-docker build --rm -f tf-2.0.0b1-gpu-py3.Dockerfile -t mytf:2.0.0b1-gpu-py3 .
+docker build --rm -f tf-2.0.0rc0-gpu-py3.Dockerfile -t mytf:2.0.0rc0-gpu-py3 .
 ```
 
 ## Aliases
@@ -40,13 +40,13 @@ alias pytf2='docker run --runtime=nvidia -it --rm -u $(id -u):$(id -g) \
              -v ${HOME}/.Xauthority:/tmp/.Xauthority \
              -e XAUTHORITY=/tmp/.Xauthority \
              -v $PWD:/app -w /app \
-             mytf:2.0.0b1-gpu-py3 python'
+             mytf:2.0.0rc0-gpu-py3 python'
 alias bashtf2='docker run --runtime=nvidia -it --rm -u $(id -u):$(id -g) \
                --net=host -e DISPLAY=$DISPLAY \
                -v ${HOME}/.Xauthority:/tmp/.Xauthority \
                -e XAUTHORITY=/tmp/.Xauthority \
                -v $PWD:/app -w /app \
-               mytf:2.0.0b1-gpu-py3 bash'
+               mytf:2.0.0rc0-gpu-py3 bash'
 ```
 Use cases of these aliases:
 * `pytf tf1.0_compatible_code.py`
